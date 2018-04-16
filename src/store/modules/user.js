@@ -1,4 +1,5 @@
 import Vue from "vue";
+import { login } from "api/login";
 
 const user = {
   state: {
@@ -14,11 +15,17 @@ const user = {
     }
   },
   actions: {
-    setName({ commit }, val) {
-      commit("SET_NAME", val);
-    },
-    setToken({commit},val){
-        commit("SET_TOKEN",val)
+    logIn: async ({ commit }, data) => {
+      try {
+        const res = await login(data);
+        console.log('res',res)
+        if(res.code=='200'){
+            commit('SET_TOKEN',res.token)
+            return Promise.resolve(res)
+        }
+      } catch (err) {
+          return Promise.reject(err)
+      }
     }
   }
 };

@@ -3,12 +3,12 @@
       <div class="login-from">
           <el-input v-model="inputName" placeholder="用户名" clearable></el-input>
           <el-input type="password" v-model="pasworld" placeholder="密码" clearable></el-input>        
-          <el-button @click="SET_TOKEN(new Date().getTime())" type="primary" plain>登录</el-button>
+          <el-button @click="clickLogin" type="primary" plain>登录</el-button>
       </div>
   </div>
 </template>
 <script>
-import { mapGetters, mapMutations, mapActions } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 export default {
   name: "login",
   data() {
@@ -21,8 +21,17 @@ export default {
     ...mapGetters(["token", "userName"])
   },
   methods: {
-    ...mapMutations(["SET_TOKEN"]),
-    ...mapActions(["setName"])
+    ...mapActions(["logIn"]),
+    clickLogin(){
+        if(this.inputName&&this.pasworld){
+            this.logIn({
+                name:this.inputName,
+                pasworld:this.pasworld
+            })
+        }else{
+            alert('请输入完整的信息')
+        }
+    }
   }
 };
 </script>
