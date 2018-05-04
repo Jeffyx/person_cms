@@ -15,7 +15,7 @@
         </el-table-column>
         <el-table-column
         property="name"
-        label="部门名称"
+        label="公司名称"
         >
         </el-table-column>
         <el-table-column

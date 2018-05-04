@@ -6,7 +6,8 @@ const getters = {
     post:state=>state.position.post,
     comInfo:state=>state.train.comInfo,
     proInfo:state=>state.train.proInfo,
-
+    salary:state=>state.salaryInfo.salary,
+    pact:state=>state.pact.pact
 }
 
 export default getters;

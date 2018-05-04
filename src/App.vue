@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex';
+import { mapGetters } from "vuex";
 import XHeader from "components/Header";
 import XAsider from "components/Asider";
 export default {
@@ -25,16 +25,21 @@ export default {
     XHeader,
     XAsider
   },
-  computed:{
-    ...mapGetters([
-      'token'
-    ])
+  computed: {
+    ...mapGetters(["token"])
   },
   watch: {
     $router: {
       handler: function() {
-        if(!this.token){
-          this.$router.push('/login')
+        // if(!this.token){
+        //   this.$router.push('/login')
+        // }
+        if (this.token == "admin") {
+          this.$router.push("/user/list");
+        } else if (this.token == "user") {
+          this.$router.push("/home");
+        } else {
+          this.$router.push("/login");
         }
       },
       immediate: true

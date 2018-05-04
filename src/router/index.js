@@ -5,8 +5,9 @@ import Home from "views/Home/Home";
 import AddUser from "views/User/AddUser";
 import UserList from "views/User/UserList";
 import DepMrg from "views/DepMrg/DepMrg";
-import ComMrg from "views/ComMrg/ComMrg"
-
+import ComMrg from "views/ComMrg/ComMrg";
+import SalaryMrg from "views/SalaryMrg/SalaryMrg";
+import PactMrg from "views/PactMrg/PactMrg"
 Vue.use(Router);
 
 export default new Router({
@@ -36,14 +37,24 @@ export default new Router({
       name: "addUser"
     },
     {
-      path:'/depmrg',
-      component:DepMrg,
-      name:'depmrg'
+      path: "/depmrg",
+      component: DepMrg,
+      name: "depmrg"
     },
     {
-      path:'/commrg',
-      component:ComMrg,
-      name:'commrg'
+      path: "/commrg",
+      component: ComMrg,
+      name: "commrg"
+    },
+    {
+      path: "/salary",
+      component: SalaryMrg,
+      name: "salarymrg"
+    },
+    {
+      path:'/pact',
+      component:PactMrg,
+      name:'pact'
     }
   ]
 });

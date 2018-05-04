@@ -7,7 +7,25 @@ const getUser =data=>{
     return axios.post('user/getUser',data)
 } 
 
+const addTrain = data=>{
+    return axios({
+        url:'train/addTrain',
+        method:'post',
+        data
+    })
+}
+
+const getAllData = data=>{
+    return axios({
+        url:'user/getAllData',
+        method:'post',
+        data
+    })
+}
+
 export default {
     addUser,
-    getUser
+    getUser,
+    addTrain,
+    getAllData
 }

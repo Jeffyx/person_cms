@@ -2,6 +2,7 @@
   <div class="user-list">
       <div class="user-list-add">
            <el-button @click="addUser" size="medium" type="primary">添加用户</el-button>
+           <el-button @click="pactVisible = true" size="medium" type="primary">添加培训人员</el-button>
       </div>
       <div class="user-list-table">
           <el-table
@@ -48,28 +49,100 @@
           <el-button type="primary">下一页<i class="el-icon-arrow-right el-icon--right"></i></el-button>
         </el-button-group>
       </div>
+       <!-- 添加培训人员 -->
+        <el-dialog title="添加培训人员" :visible.sync="pactVisible">
+        <el-form :model="pactFrom">
+            <el-form-item label="选择用户" :label-width="formLabelWidth">
+                <el-select v-model="pactFrom.userId" placeholder="请选择用户">
+                <template v-for="itm in userList">
+                  <el-option :key="itm.id" :label="itm.name" :value="itm.id"></el-option>
+                </template>
+              </el-select>
+            </el-form-item>
+            <el-form-item label="开始/结束时间" :label-width="formLabelWidth">
+            <el-date-picker
+            v-model="pactFrom.time"
+            type="daterange"
+            range-separator="至"
+            start-placeholder="开始日期"
+            end-placeholder="结束日期"
+            value-format="yyyy-MM-dd">
+            </el-date-picker>
+            </el-form-item>
+             <el-form-item label="培训项目">
+              <el-select v-model="pactFrom.comId" placeholder="培训公司">
+                <template v-for="itm in comInfo">
+                  <el-option :key="itm.id" :label="itm.name" :value="itm.id"></el-option>
+                </template>
+              </el-select>
+              <el-select v-model="pactFrom.projectId" placeholder="培训项目">
+                <template v-for="itm in proInfo">
+                  <el-option :key="itm.id" :label="itm.project" :value="itm.id"></el-option>
+                </template>
+              </el-select>
+            </el-form-item>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+            <el-button @click="pactVisible = false">取 消</el-button>
+            <el-button type="primary" @click="addTrain">确 定</el-button>
+        </div>
+    </el-dialog>
   </div>
 </template>
 <script>
 import { mapGetters, mapActions } from "vuex";
+import userList from "api/userList";
+
 export default {
   name: "userList",
   data() {
     return {
-      tableData: []
+      tableData: [],
+      pactVisible: false,
+      pactFrom: {},
+      formLabelWidth: "120px"
     };
   },
   methods: {
-    ...mapActions(["getUserList"]),
+    ...mapActions(["getUserList", "comDataMrg", "proDataMrg"]),
     addUser() {
       this.$router.push("/user/add");
+    },
+    addTrain() {
+      userList.addTrain({
+        userId: this.pactFrom.userId,
+        startTime: this.pactFrom.time[0],
+        endTime: this.pactFrom.time[1],
+        projectId:this.pactFrom.projectId
+      }).then(res=>{
+        this.$message({
+              type: 'info',
+              message: `添加成功`
+            });
+      }).catch(err=>{
+        this.$message({
+              type: 'error',
+              message: `错误`
+            });
+      });
+      this.pactVisible = false;
+
     }
   },
   computed: {
-    ...mapGetters(["userList"])
+    ...mapGetters(["userList", "comInfo", "proInfo"])
   },
   created() {
     this.getUserList({ index: 1 });
+    this.comDataMrg();
+  },
+  watch: {
+    pactFrom: {
+      handler: function(val, old) {
+        this.proDataMrg(val.comId);
+      },
+      deep: true
+    }
   }
 };
 </script>

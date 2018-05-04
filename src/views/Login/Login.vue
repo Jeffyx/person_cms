@@ -31,9 +31,18 @@ export default {
           password: this.pasworld
         })
           .then(res => {
-            this.$router.push('/home');
+            if (res.msn == "admin") {
+              this.$router.push("/user/list");
+              return;
+            }
+            this.$router.push("/home");
           })
-          .catch(err => {});
+          .catch(err => {
+            this.$message({
+              type: 'error',
+              message: `用户名或密码错误`
+            });
+          });
       } else {
         alert("请输入完整的信息");
       }

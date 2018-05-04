@@ -4,7 +4,7 @@ import userMrg from "api/userList";
 
 const user = {
   state: {
-    token: "",
+    token: window.localStorage.getItem('userName'),
     name: "",
     userList: []
   },
@@ -26,13 +26,18 @@ const user = {
     logIn: async ({ commit }, data) => {
       try {
         const res = await login(data);
-        if (res.code == "200") {
-          commit("SET_TOKEN", res.token);
-          return Promise.resolve(res);
+        if (res.data.code == "200") {
+          commit("SET_TOKEN", res.data.msn);
+          window.localStorage.setItem('userName',res.data.msn)
+          return Promise.resolve(res.data);
         }
       } catch (err) {
         return Promise.reject(err);
       }
+    },
+    logOut:async ({commit},data)=>{
+      
+      commit('SET_TOKEN','');
     },
     addUser: async ({ commit }, data) => {
       try {
