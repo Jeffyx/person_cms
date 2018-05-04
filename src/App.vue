@@ -4,7 +4,7 @@
           <x-header/>
       </el-header>
       <el-container>
-        <el-aside width="200px">
+        <el-aside width="180px">
           <x-asider/>
         </el-aside>
         <el-main>
@@ -56,8 +56,8 @@ export default {
 
 .el-main {
   color: #333;
-  text-align: center;
-  line-height: 160px;
+  // text-align: center;
+  // line-height: 160px;
 }
 
 .el-container:nth-child(5) .el-aside,
