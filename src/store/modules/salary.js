@@ -24,14 +24,15 @@ const salaryInfo = {
   actions: {
     salaryData: async ({ commit, state }, data) => {
       const saData = state.salary;
-      if (saData.length == 0) {
-        const res = await apiSalary.getSalary({});
-        commit("SET_SALARY", res.data.list);
-      }
       if (data) {
         await apiSalary.addSalary(data);
         commit("PUSH_SALARY", data);
       }
+      // if (saData.length == 0) {
+        const res = await apiSalary.getSalary({});
+        commit("SET_SALARY", res.data.list);
+      // }
+      
     },
     updataSalary: async ({ commit }, data) => {
       await apiSalary.modifySalary(data);

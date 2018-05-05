@@ -79,10 +79,11 @@
     <!-- 计算薪资薪资 -->
     <div class="salary-import">
         <h3>计算薪资</h3>
+        <!-- http://localhost:8080/api -->
         <el-upload
         class="upload-demo"
         drag
-        action="http://localhost:8080/api/zq/salary/importDays/"
+        action="/zq/salary/importDays"
         multiple>
         <i class="el-icon-upload"></i>
         <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
@@ -154,7 +155,10 @@ export default {
             });
       })
       .catch(err=>{
-
+        this.$message({
+              type: 'error',
+              message: `服务器错误`
+            });
       })
     }
   },

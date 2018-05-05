@@ -4,7 +4,8 @@ import store from "../store";
 
 
 const instance = axios.create({
-  baseURL: "/api/zq",
+  // baseURL: "/api/zq",
+  baseURL: "/zq",
   timeout: 5000,
   headers: { 'Content-Type': 'application/json' }
 });

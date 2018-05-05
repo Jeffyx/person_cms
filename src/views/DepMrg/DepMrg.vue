@@ -150,6 +150,7 @@ export default {
         // inputErrorMessage: "请输入正确的名称"
       })
         .then(({ value }) => {
+          console.log({ name: value, parentId:this.currentRow.id },this.currentRow.id)
           this.addPost({ name: value, parentId:this.currentRow.id });
           this.$message({
             type: "success",

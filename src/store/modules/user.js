@@ -49,10 +49,10 @@ const user = {
       }
     },
     getUserList: async ({ commit, state }, data) => {
-      if (state.userList.length == 0) {
+      // if (state.userList.length == 0) {
         const res = await userMrg.getUser(data);
         commit("SET_USERLIST", res.data.list);
-      }
+      // }
     }
   }
 };
