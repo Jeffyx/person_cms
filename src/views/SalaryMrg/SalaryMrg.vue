@@ -12,7 +12,7 @@
         width="50">
         </el-table-column>
         <el-table-column
-        property="name"
+        property="NAME"
         label="姓名"
         >
         </el-table-column>
@@ -62,7 +62,7 @@
     <el-dialog title="修改薪资" :visible.sync="modifySalaryVisible">
         <el-form :model="modifyCurFrom">
             <el-form-item label="姓名" :label-width="formLabelWidth">
-                <el-input v-model="modifyCurFrom.name" auto-complete="off"></el-input>
+                <el-input v-model="modifyCurFrom.NAME" auto-complete="off"></el-input>
             </el-form-item>
             <el-form-item label="基本薪资" :label-width="formLabelWidth">
                 <el-input v-model="modifyCurFrom.baseWage" auto-complete="off"></el-input>
@@ -82,7 +82,7 @@
         <el-upload
         class="upload-demo"
         drag
-        action="http://localhost:8080/zq/salary/importDays/"
+        action="http://localhost:8080/api/zq/salary/importDays/"
         multiple>
         <i class="el-icon-upload"></i>
         <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
@@ -135,7 +135,9 @@ export default {
       this.modifySalaryVisible = false;
     },
     findCountRes(){
-      apiSalary.getCount(this.countFrom)
+      apiSalary.getCount({
+        fileName:this.countFrom.fileName
+      })
       .then(res=>{
         // this.$alert(`计算和的薪资为 ${res.data.data}`, '查询薪资', {
         //   confirmButtonText: '确定',

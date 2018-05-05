@@ -142,7 +142,7 @@ export default {
         });
         return;
       }
-      const parentId = this.currentRow.id;
+      // const parentId = this.currentRow.id;
       this.$prompt("请输入职位名称", "添加职位", {
         confirmButtonText: "确定",
         cancelButtonText: "取消"
@@ -150,7 +150,7 @@ export default {
         // inputErrorMessage: "请输入正确的名称"
       })
         .then(({ value }) => {
-          this.addPost({ name: value, parentId });
+          this.addPost({ name: value, parentId:this.currentRow.id });
           this.$message({
             type: "success",
             message: "添加成功"
