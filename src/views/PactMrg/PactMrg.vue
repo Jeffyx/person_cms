@@ -25,7 +25,7 @@
         </el-table>
 
         <!-- 添加合同 -->
-        <el-dialog title="添加薪资" :visible.sync="pactVisible">
+        <el-dialog title="添加合同" :visible.sync="pactVisible">
         <el-form :model="pactFrom">
             <el-form-item label="选择用户" :label-width="formLabelWidth">
                 <el-select v-model="pactFrom.user" placeholder="请选择用户">

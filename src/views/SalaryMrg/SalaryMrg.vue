@@ -1,6 +1,8 @@
 <template>
   <div class="salary">
       <el-button @click="salaryVisible = true" type="primary">添加薪资</el-button>
+              <el-button @click="findCountGet" type="info">导出薪资</el-button>
+      
       <el-table
         ref="singleTable"
         :data="salary"
@@ -113,7 +115,7 @@ export default {
       formLabelWidth: "120px",
       modifyCurFrom: {},
       modifySalaryVisible: false,
-      countFrom:{}
+      countFrom: {}
     };
   },
   methods: {
@@ -121,13 +123,13 @@ export default {
     handleCurrentChange() {},
     handleEdit(index, row) {
       this.modifyCurFrom = row;
-       this.modifySalaryVisible = true;
+      this.modifySalaryVisible = true;
     },
     addSalaryFrom() {
       this.salaryData({
-        userId:this.salaryFrom.id,
-        baseWage:this.salaryFrom.baseWage,
-        subsidy:this.salaryFrom.subsidy
+        userId: this.salaryFrom.id,
+        baseWage: this.salaryFrom.baseWage,
+        subsidy: this.salaryFrom.subsidy
       });
       this.salaryVisible = false;
     },
@@ -135,31 +137,35 @@ export default {
       this.updataSalary(this.modifyCurFrom);
       this.modifySalaryVisible = false;
     },
-    findCountRes(){
-      apiSalary.getCount({
-        fileName:this.countFrom.fileName
-      })
-      .then(res=>{
-        // this.$alert(`计算和的薪资为 ${res.data.data}`, '查询薪资', {
-        //   confirmButtonText: '确定',
-        //   callback: action => {
-        //     this.$message({
-        //       type: 'info',
-        //       message: `action: ${ action }`
-        //     });
-        //   }
-        // });
-        this.$message({
-              type: 'info',
-              message: `计算成功`
-            });
-      })
-      .catch(err=>{
-        this.$message({
-              type: 'error',
-              message: `服务器错误`
-            });
-      })
+    findCountRes() {
+      apiSalary
+        .getCount({
+          fileName: this.countFrom.fileName
+        })
+        .then(res => {
+          // this.$alert(`计算和的薪资为 ${res.data.data}`, '查询薪资', {
+          //   confirmButtonText: '确定',
+          //   callback: action => {
+          //     this.$message({
+          //       type: 'info',
+          //       message: `action: ${ action }`
+          //     });
+          //   }
+          // });
+          this.$message({
+            type: "info",
+            message: `计算成功`
+          });
+        })
+        .catch(err => {
+          this.$message({
+            type: "error",
+            message: `服务器错误`
+          });
+        });
+    },
+    findCountGet() {
+      window.open("/zq/salary/importDays");
     }
   },
   computed: {
@@ -173,7 +179,7 @@ export default {
 
 <style scoped lang="scss">
 .salary {
-  &-find{
+  &-find {
     width: 50%;
     display: flex;
     flex-direction: column;

@@ -30,30 +30,58 @@ export default {
   name: "home",
   data() {
     return {
-      allData: {}
+      allData: {
+        onePact: {
+          userName: "",
+          startTime: "",
+          endTime: ""
+        },
+        oneSalary: {
+          baseWage: "",
+          subsidy: ""
+        },
+        oneTrain: {
+          userName: "",
+          startTime: "",
+          endTime: ""
+        },
+        oneUser: {},
+        userDay: []
+      }
     };
   },
-  methods:{
-    viewsChange(data){
-     return data?data:'暂无信息'
+  methods: {
+    viewsChange(data) {
+      return data ? data : "暂无信息";
     }
   },
   created() {
     userData
       .getAllData({})
       .then(res => {
-        let list = res.data.data
-        if(!list.onePact){
-          list.onePact = {}
+        let list = res.data.data;
+        if (!list.onePact) {
+          list.onePact = {
+            userName: "",
+            startTime: "",
+            endTime: ""
+          };
         }
-        if(!list.oneSalary){
-          list.oneSalary = {}
+        if (!list.oneSalary) {
+          list.oneSalary = {
+            baseWage: "",
+            subsidy: ""
+          };
         }
-        if(!list.oneTrain){
-          list.oneTrain = {}
+        if (!list.oneTrain) {
+          list.oneTrain = {
+            userName: "",
+            startTime: "",
+            endTime: ""
+          };
         }
-        if(!list.oneUser){
-          list.oneUser = {}
+        if (!list.oneUser) {
+          list.oneUser = {};
         }
         this.allData = list;
       })
