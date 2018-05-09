@@ -1,7 +1,7 @@
 <template>
   <div class="login">
       <div class="login-from">
-      <h3>欢迎登陆人力资源管理系统</h3> 
+      <h3>欢迎登陆证券人力资源管理系统</h3> 
         
           <el-input v-model="inputName" placeholder="用户名" clearable></el-input>
           <el-input type="password" v-model="pasworld" placeholder="密码" clearable></el-input>        
