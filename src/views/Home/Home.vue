@@ -14,11 +14,15 @@
         结束时间：{{allData.oneTrain.endTime}}
 
         <h3>考勤</h3>
-        <p v-for="(item,index) in allData.userDay" :key="index">
+        <div v-for="(item,index) in allData.userDay" :key="index">
           <p>考勤信息：{{item.kq_date}}</p>
           <p>工作日：{{item.work_days}}</p>
           <p>出勤天数：{{item.really_days}}</p>
-        </p>
+        </div>
+        <h3>薪资信息</h3>
+        <div>
+          
+        </div>
       </el-card>
   </div>
 </template>
@@ -30,6 +34,9 @@ export default {
     return {
       allData: {}
     };
+  },
+  computed(){
+
   },
   created() {
     userData
