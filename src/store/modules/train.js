@@ -45,14 +45,15 @@ const position = {
     comDataMrg: async ({ commit, state }, data) => {
       const comData = state.comInfo;
       try {
-        if (comData.length == 0) {
+        if (data) {
+          await ComMrg.addCom(data);
+          commit("PUSH_COM", data);
+      }
+
+        // if (comData.length == 0) {
             const allDep = await ComMrg.getCom({});
             commit("SET_COM", allDep.data.list);
-          }
-          if (data) {
-            await ComMrg.addCom(data);
-            commit("PUSH_COM", data);
-        }
+          // }
         return Promise.resolve(1)
       } catch (error) {
           return Promise.reject(0)

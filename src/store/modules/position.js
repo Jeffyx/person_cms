@@ -40,14 +40,15 @@ const position = {
   actions: {
     depInfo: async ({ commit, state }, data) => {
       const depData = state.dep;
-      if (depData.length == 0) {
-        const allDep = await getDep.getAllDep({});
-        commit("SET_DEP", allDep.data.list);
-      }
       if (data) {
         await setDep.addDepOrPos(data);
         commit("PUSH_DEP", data);
       }
+      // if (depData.length == 0) {
+        const allDep = await getDep.getAllDep({});
+        commit("SET_DEP", allDep.data.list);
+      // }
+      
     },
     postData: async ({ commit, state }, id) => {
       const posData = state.post;

@@ -16,10 +16,10 @@ const pactInfo = {
   actions: {
     getPact:async ({ commit, state}, data) => {
         const pData = state.pact;
-        if(pData.length==0){
+        // if(pData.length==0){
            const res = await apiPact.getPact({});
             commit('SET_PACT',res.data.list)
-        }
+        // }
     },
     addPact:async ({commit},data)=>{
         await apiPact.addPact(data);

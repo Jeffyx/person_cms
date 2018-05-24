@@ -32,9 +32,18 @@ const getCount = data =>{
   })
 }
 
+const exportExcel = data =>{
+  return axios({
+    url:'salary/exportExcel',
+    method:'post',
+    data
+  })
+}
+
 export default {
   addSalary,
   modifySalary,
   getSalary,
-  getCount
+  getCount,
+  exportExcel
 };

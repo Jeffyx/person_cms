@@ -38,6 +38,13 @@
         <span>薪资管理</span>
       </el-menu-item>
       <el-menu-item 
+      @click="changeRouter('/count')"
+      index="7"
+      >
+        <i class="el-icon-circle-plus-outline"></i>
+        <span>考勤管理</span>
+      </el-menu-item>
+      <el-menu-item 
       @click="changeRouter('/pact')"
       index="5"
       >

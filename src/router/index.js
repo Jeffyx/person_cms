@@ -7,7 +7,8 @@ import UserList from "views/User/UserList";
 import DepMrg from "views/DepMrg/DepMrg";
 import ComMrg from "views/ComMrg/ComMrg";
 import SalaryMrg from "views/SalaryMrg/SalaryMrg";
-import PactMrg from "views/PactMrg/PactMrg"
+import PactMrg from "views/PactMrg/PactMrg";
+import Count from "views/Count/Count";
 Vue.use(Router);
 
 export default new Router({
@@ -52,9 +53,14 @@ export default new Router({
       name: "salarymrg"
     },
     {
-      path:'/pact',
-      component:PactMrg,
-      name:'pact'
+      path: "/pact",
+      component: PactMrg,
+      name: "pact"
+    },
+    {
+      path: "/count",
+      component: Count,
+      name: "count"
     }
   ]
 });
