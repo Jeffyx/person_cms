@@ -11,11 +11,11 @@ module.exports = {
     assetsPublicPath: "/",
     proxyTable: {
       "/api": {
-        target: "http://182.61.18.212:8080/", 
+        target: "http://tx.dangge.moe:8080/", 
         // changeOrigin: true,
         pathRewrite: {
           "^/api": "",
-          "http://localhost:8080/":"http://182.61.18.212:8080/"
+          "http://localhost:8080/":"http://tx.dangge.moe:8080/"
         }
       }
     },

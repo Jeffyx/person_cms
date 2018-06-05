@@ -51,6 +51,13 @@
         <i class="el-icon-tickets"></i>
         <span>合同管理</span>
       </el-menu-item>
+      <el-menu-item 
+      @click="changeRouter('/jc')"
+      index="7"
+      >
+        <i class="el-icon-star-off"></i>
+        <span>奖惩管理</span>
+      </el-menu-item>
       </div>
       <div v-if="!token == 'admin'">
         <el-menu-item 

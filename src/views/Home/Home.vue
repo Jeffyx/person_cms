@@ -51,6 +51,7 @@
             <p>实发工资：{{item.finalPay}}</p>
             <p>应发工资：{{item.totalPay}}</p>
             <p>公积金：{{item.af}}</p>
+            <p>奖罚：{{item.jf}}</p>
             <br>
           </div>
         </el-card>

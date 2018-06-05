@@ -9,6 +9,7 @@ import ComMrg from "views/ComMrg/ComMrg";
 import SalaryMrg from "views/SalaryMrg/SalaryMrg";
 import PactMrg from "views/PactMrg/PactMrg";
 import Count from "views/Count/Count";
+import Jfcs from "views/Jfcs/Jfcs";
 Vue.use(Router);
 
 export default new Router({
@@ -61,6 +62,11 @@ export default new Router({
       path: "/count",
       component: Count,
       name: "count"
+    },
+    {
+      path: "/jc",
+      component: Jfcs,
+      name: "jc"
     }
   ]
 });

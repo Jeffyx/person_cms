@@ -59,6 +59,13 @@
                 </template>
               </el-select>
             </el-form-item>
+            <el-form-item label="培训类型" :label-width="formLabelWidth">
+                <el-select v-model="pactFrom.state" placeholder="选择类型">
+                <template v-for="(itm,i) in ['普通培训','绩效培训']">
+                  <el-option :key="i" :label="itm" :value="i+2+''"></el-option>
+                </template>
+              </el-select>
+            </el-form-item>
             <el-form-item label="开始/结束时间" :label-width="formLabelWidth">
             <el-date-picker
             v-model="pactFrom.time"
@@ -113,7 +120,8 @@ export default {
         userId: this.pactFrom.userId,
         startTime: this.pactFrom.time[0],
         endTime: this.pactFrom.time[1],
-        projectId:this.pactFrom.projectId
+        projectId:this.pactFrom.projectId,
+        status:this.pactFrom.status
       }).then(res=>{
         this.$message({
               type: 'info',

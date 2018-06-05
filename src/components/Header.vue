@@ -1,6 +1,6 @@
 <template>
   <div class="hd">
-    <p class="hd-logo">证券人力资源管理系统</p>
+    <p class="hd-logo">人力资源管理系统</p>
     <p><span>{{token}}</span>&nbsp;&nbsp;&nbsp;<span @click="log_out">登出</span></p>
   </div>
 </template>
